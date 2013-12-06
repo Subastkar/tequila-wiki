@@ -1,0 +1,11 @@
+extends ../layout
+
+block content 
+  h1 New article
+
+  form(name='articleForm', action="save", method='post')
+    label Title
+    input(type='text')
+    label Content
+    textarea
+    input(type="submit") Save article
