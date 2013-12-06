@@ -1,8 +1,5 @@
+var applicationController = require('../controllers/application_controller');
 
-/*
- * GET home page.
- */
-
-exports.index = function(req, res){
-  res.render('index', { title: 'Express' });
+module.exports = function(app){
+  app.get('/', applicationController.index.bind(applicationController));
 };
