@@ -1,8 +1,10 @@
 module.exports = {
-  new: function(req, res){
-    res.render('articles/new');
+  index: function(req, res){
+    return res.send(200);
   },
-  save: function(req, res){
-    console.log(req);
+  new: function(req, res){
+    console.log(req.body);
+
+    res.send(200, {message: "Article saved correctly"})
   }
 };
