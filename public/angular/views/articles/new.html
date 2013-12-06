@@ -1,0 +1,15 @@
+<div ng-controller="newArticle">
+  <h2>Write an article:</h2>
+  <p>You have something interesting to share, some newly acquired knowledge and want to share it. Feel free to publish this awesome article.</p>
+  <form name="articleForm" role="form" ng-submit="saveArticle()">
+    <div class="form-group">
+      <label>Title:</label>
+      <input type="text" class="form-control" ng-model="article.title"/>
+    </div>
+    <div class="form-group">
+      <label>Content:</label>
+      <textarea class="form-control" rows="4" ng-model="article.content"></textarea>
+    </div>
+    <button type="submit" class="btn btn-default">Save article!</button>
+  </form>
+</div>

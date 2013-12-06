@@ -1,0 +1,9 @@
+<div ng-controller="applicationController">
+  <h2>We have the next articles available right now</h2>
+  <p>This example of a list of articles that should be available in the wiki.</p>
+  <ul>
+    <li ng-repeat="article in articles">{{ article }}</li>
+  </ul>
+  <a class="btn btn-primary" href="#/article/new" role="button">Write a new article</a>
+  </p>
+</div>
