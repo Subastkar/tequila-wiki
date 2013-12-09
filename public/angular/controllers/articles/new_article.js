@@ -1,4 +1,4 @@
-wikiApp.controller('newArticle', [ '$scope', '$http', function($scope, $http){
+wikiApp.controller('newArticle', [ '$scope', '$http', '$location', function($scope, $http, $location){
   var onError = function(error){
     alert(error.message);
   };
@@ -6,8 +6,9 @@ wikiApp.controller('newArticle', [ '$scope', '$http', function($scope, $http){
   $scope.saveArticle = function(){
     var request = $http.post('/api/v1/articles/new', {article: $scope.article});
 
-    request.success(function(){
-      console.log('Something here');
+    request.success(function(data){
+      console.log(data.message);
+      $location.path('/');
     });
 
     request.error(onError);
