@@ -5,5 +5,7 @@ wikiApp.config(['$routeProvider', function($routeProvider){
     templateUrl: 'angular/views/home.html'
   }).when('/article/new', {
     templateUrl: 'angular/views/articles/new.html'
+  }).when('/article/:id/edit', {
+    templateUrl: 'angular/views/articles/edit.html'
   });
 }]);

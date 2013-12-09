@@ -7,7 +7,7 @@ wikiApp.controller('newArticle', [ '$scope', '$http', '$location', function($sco
     var request = $http.post('/api/v1/articles/new', {article: $scope.article});
 
     request.success(function(data){
-      console.log(data.message);
+      alert(data.message);
       $location.path('/');
     });
 
