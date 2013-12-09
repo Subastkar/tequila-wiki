@@ -2,7 +2,7 @@
   <h2>We have the next articles available right now</h2>
   <p>This example of a list of articles that should be available in the wiki.</p>
   <ul>
-    <li ng-repeat="article in articles"><a href="#/article/{{article._id}}/edit">{{ article.title }}</a> (<a href="javascript:void(0)" ng-click="deleteArticle(article._id)">Delete</a>)</li>
+    <li ng-repeat="article in articles"><a href="#/article/{{article._id}}">{{ article.title }}</a> (<a href="javascript:void(0)" ng-click="deleteArticle(article._id)">Delete</a>)</li>
   </ul>
   <a class="btn btn-primary" href="#/article/new" role="button">Write a new article</a>
   </p>
