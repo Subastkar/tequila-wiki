@@ -1,11 +1,16 @@
 //Require underscore as Global variable
-GLOBAL._  = require('underscore');
+global._  = require('underscore');
 
 var express = require('express');
 var http = require('http');
 var path = require('path');
 
 var app = express();
+
+require('./lib/database')(function(error){
+  if(error){ throw new Error(error); }
+  console.log('Database connected');
+});
 
 // all environments
 app.set('port', process.env.PORT || 3000);
