@@ -1,5 +1,6 @@
 <div ng-controller="editArticle">
   <h2>Edit this article:</h2>
+  <div id="editor"></div>
   <form name="articleForm" role="form" ng-submit="saveArticle()">
     <div class="form-group">
       <label>Title:</label>
@@ -13,3 +14,13 @@
     <a href="#/article/{{article._id}}" class="btn btn-danger" role="button">Cancel</a>
   </form>
 </div>
+
+<script>
+  $(function(){
+    var editor = ace.edit("editor");
+
+    sharejs.open('hello', 'text', function(error, doc) {
+      doc.attach_ace(editor);
+    });
+  });
+</script>

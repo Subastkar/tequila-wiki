@@ -13,7 +13,6 @@
     "underscore": "1.5.2",
     "mongoose": "3.8.1",
     "share": "0.6.2",
-    "connect": "2.11.2",
     "jade": "*"
   }
 }
