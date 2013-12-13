@@ -26,6 +26,7 @@ wikiApp.run(function($http, $window, $rootScope) {
       setTimeout(function(){
         var requests = JSON.parse(localStorage.getItem("create_article"));
 
+        if(!requests){ return false; }
         var next = _.after(requests.length, function(){
           localStorage.removeItem("create_article");
         });

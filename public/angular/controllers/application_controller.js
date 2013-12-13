@@ -22,7 +22,7 @@ wikiApp.controller('applicationController', [ '$scope', '$http', '$rootScope', f
     }));
 
     var next = _.after(to_delete.length + 1, function(){
-      var done = _.after(to_update.length, function(){
+      var done = _.after(to_update.length + 1, function(){
         localStorage.setItem('catalog', JSON.stringify(catalog));
       });
 
@@ -44,6 +44,8 @@ wikiApp.controller('applicationController', [ '$scope', '$http', '$rootScope', f
           done();
         });
       });
+
+      done();
     });
 
     _.each(to_delete, function(id){
