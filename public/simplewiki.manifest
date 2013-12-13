@@ -1,0 +1,44 @@
+CACHE MANIFEST
+
+simplewiki.manifest
+index.html
+
+# Angular stuff
+angular/app.js
+angular/controllers/application_controller.js
+angular/controllers/articles/new_article.js
+angular/controllers/articles/edit_article.js
+angular/views/home.html
+angular/views/navbar-top.html
+angular/views/articles/new.html
+angular/views/articles/view.html
+angular/views/articles/edit.html
+
+# Javascript libraries
+javascripts/ace.js
+javascripts/angular-route.min.js
+javascripts/angular-route.min.js.map
+javascripts/angular.min.js
+javascripts/angular.min.js.map
+javascripts/bootstrap.js
+javascripts/bootstrap.min.js
+javascripts/jquery-2.0.3.min.js
+javascripts/jquery-2.0.3.min.map
+javascripts/underscore-min.js
+javascripts/underscore-min.map
+
+# Css
+stylesheets/articles.css
+stylesheets/style.css
+stylesheets/bootstrap-theme.css
+stylesheets/bootstrap-theme.min.css
+stylesheets/bootstrap.css
+stylesheets/bootstrap.min.css
+
+#Sharejs stuff
+channel/bcsocket.js
+share/share.js
+share/ace.js
+
+NETWORK:
+*
