@@ -1,40 +1,40 @@
-wikiApp.controller('editArticle', [ '$scope', '$http', '$location', '$routeParams', function($scope, $http, $location, $routeParams){
+wikiApp.controller('editArticle', [ '$scope', '$http', '$location', '$routeParams', '$rootScope', function($scope, $http, $location, $routeParams, $rootScope){
   var docContent, docTitle;
 
   var onError = function(error){
     alert(error.message);
   };
 
-  var request = $http.get('/api/v1/articles/'+ $routeParams.id);
 
-  request.success(function(article){
-    $scope.article = article;
+  $scope.article = JSON.parse(localStorage.getItem("catalog"))[$routeParams.id];
 
-    //Open a share channel if the user is on editing mode
-    if($scope.editing){
-      var title_editor = ace.edit("title-editor");
-      var content_editor = ace.edit("content-editor");
+  if($rootScope.online){
+    var request = $http.get('/api/v1/articles/'+ $routeParams.id).success(function(article){
+      $scope.article = article;
 
-      sharejs.open(article._id, 'text', function(error, doc) {
+      //Open a share channel if the user is on editing mode
+      if($scope.editing){
+        var title_editor = ace.edit("title-editor");
+        var content_editor = ace.edit("content-editor");
 
-        docContent = doc;
-        //Attach original content if no one is using it.
-        if(doc.snapshot === ""){ doc.insert(0, article.content); } 
-        doc.attach_ace(content_editor);
-      });
+        sharejs.open(article._id, 'text', function(error, doc) {
 
-      console.log(article._id+'-title');
-      sharejs.open(article._id+'-title', 'text', function(error, doc) {
+          docContent = doc;
+          //Attach original content if no one is using it.
+          if(doc.snapshot === ""){ doc.insert(0, article.content); } 
+          doc.attach_ace(content_editor);
+        });
 
-        docTitle = doc;
-        //Attach original content if no one is using it.
-        if(doc.snapshot === ""){ doc.insert(0, article.title); } 
-        doc.attach_ace(title_editor);
-      });
-    }
-  });
+        sharejs.open(article._id+'-title', 'text', function(error, doc) {
 
-  request.error(onError);
+          docTitle = doc;
+          //Attach original content if no one is using it.
+          if(doc.snapshot === ""){ doc.insert(0, article.title); } 
+          doc.attach_ace(title_editor);
+        });
+      }
+    }).error(onError);
+  }
 
   $scope.saveArticle = function(){
     $scope.article.title = docTitle.snapshot;
