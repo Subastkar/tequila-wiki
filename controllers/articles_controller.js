@@ -2,7 +2,10 @@ var articleModel   = require('../models/article');
 
 module.exports = {
   index: function(req, res){
-    articleModel.find({}, 'id title', function(error, articles){
+    var fields = 'id title updated_at';
+    if(req.query.complete){ fields = ''; }
+
+    articleModel.find({}, fields, function(error, articles){
       if(error){ return res.send(400, error); }
 
       return res.send(200, articles);
