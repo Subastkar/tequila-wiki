@@ -18,6 +18,9 @@ module.exports = {
       if(article){ return res.send(409, {message: 'An article that goes by this title already exists.'}); }
 
       var new_article = new articleModel(req.body.article);
+      new_article.created_at = new Date().toISOString();
+      new_article.updated_at = new Date().toISOString();
+
       new_article.save(function(error, article){
         if(error){ return res.send(400, error); }
 
@@ -34,6 +37,8 @@ module.exports = {
   },
   update: function(req, res){
     var article = _.omit(req.body.article, ['_id', '_v']);
+    article.updated_at = new Date().toISOString();
+
     articleModel.update({_id: req.params.id}, article, function(error, article){
       if(error){ return res.send(400, error); }
 
@@ -44,7 +49,6 @@ module.exports = {
     articleModel.findOneAndRemove({_id: req.params.id}, function(error, article){
       if(error){ return res.send(400, error); }
 
-      console.log(article);
       return res.send(200, {message: "Article deleted succesfully."})
     });
   }
